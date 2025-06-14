@@ -48,7 +48,7 @@ def main():
 
     if args.lang == "jp":
         title = "文字数カウント（クリップボード）" if args.source == "clipboard" else "文字数カウント（選択テキスト）"
-        msg = f"{c1} 文字\n{c2} 文字（空白除く）\n{w} 単語（英語）"
+        msg = f"{c1} 文字\n{c2} 文字（空白除く）\n{w} 単語"
     else:
         title = "Word Counter (Clipboard)" if args.source == "clipboard" else "Word Counter (Selected Text)"
         msg = f"{c1} chars\n{c2} chars (no spaces)\n{w} words"
