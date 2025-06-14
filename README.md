@@ -25,8 +25,9 @@ Automator でシェルスクリプトを実行し、シェルスクリプトで 
         - クリップボードを取得する場合
             - `source="clipboard"` とする
             - 「ワークフローが受け取る項目」は、入力なし
-    3. `word_counter.py` のパスを正しいものに変更
-        - `"$HOME/Projects/word-counter/word_counter.py"`など
+    3. Python ファイルへのパスを設定
+        - `word_counter.py` のパスを正しいものに変更する
+            - `"$HOME/Projects/word-counter/word_counter.py"`など
 4. 保存して命名
     - 補足1：開発者は、「文字数カウント（選択テキスト）」と「文字数カウント（クリップボード）」と命名しました。
     - 補足2：Automator が選択テキストを受け取れないアプリケーションが存在するため、併用を推奨します。（ChatGPTなど）
