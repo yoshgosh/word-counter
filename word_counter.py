@@ -5,11 +5,11 @@ import unicodedata
 import subprocess
 import argparse
 
-# def dialog(message: str, title: str = "Word Counter") -> None:
-#     message = message.replace('"', '\\"').replace('\n', '\\n')
-#     title = title.replace('"', '\\"')
-#     script = f'display dialog "{message}" with title "{title}" buttons {{"OK"}} default button "OK"'
-#     subprocess.run(["osascript", "-e", script], check=False)
+def dialog(message: str, title: str = "Word Counter") -> None:
+    message = message.replace('"', '\\"').replace('\n', '\\n')
+    title = title.replace('"', '\\"')
+    script = f'display dialog "{message}" with title "{title}" buttons {{"OK"}} default button "OK"'
+    subprocess.run(["osascript", "-e", script], check=False)
 
 def notify(message: str, title: str = "Word Counter") -> None:
     script = f'display notification "{message}" with title "{title}"'
@@ -17,9 +17,14 @@ def notify(message: str, title: str = "Word Counter") -> None:
 
 def get_text(source: str) -> str:
     if source == "clipboard":
-        return subprocess.run(["pbpaste"], stdout=subprocess.PIPE, check=True).stdout.decode("utf-8")
+        text = subprocess.run(["pbpaste"], stdout=subprocess.PIPE, check=True).stdout.decode("utf-8")
     else:
-        return sys.stdin.read()
+        text = sys.stdin.read()
+        # Automator 経由の選択テキストは末尾に \n が1つ追加されるため、1文字だけ除去
+        if text.endswith("\n"):
+            text = text[:-1]
+    # dialog(f"---\n{text}\n---")　# 入力チェック用
+    return text
 
 def preprocess(text: str) -> str:
     text = unicodedata.normalize("NFKC", text)
