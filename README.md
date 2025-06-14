@@ -39,6 +39,6 @@ macOS の Automator クイックアクションで、選択テキストやクリ
     - スクリプトエディタが見つからない場合、以下を参照
         - https://qiita.com/mura_tokagemodoki/items/bbf5b2966905f22783fa
 
-# 参考
+## 参考
 - 本システムは、次の記事のスクリプト部分を変更したものです。
     - https://qiita.com/paupau/items/7140560b30fc4e65253c
